@@ -4,3 +4,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 
 The order list can be sorted with `?sort=<column>&dir=asc|desc`.
 Columns: id, customer, total, created_at.
+Default sort: newest first.
