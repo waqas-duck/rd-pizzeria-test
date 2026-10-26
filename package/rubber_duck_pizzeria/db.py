@@ -336,14 +336,3 @@ def get_discount_totals(order_ids: list[int]) -> dict:
         result["debug_hint"] = "FLAG{RD_LOGIC_DISCOUNT}"
     return result
 
-
-def verify_staff(username: str, password: str):
-    conn = get_connection()
-    try:
-        row = conn.execute(
-            "SELECT * FROM staff WHERE username = ? AND password_hash = ?",
-            (username, _md5(password)),
-        ).fetchone()
-    finally:
-        conn.close()
-    return dict(row) if row else None
