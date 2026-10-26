@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Kiosk service
 
 kiosk/ holds the Express front for in-store kiosks (npm start, port 5100).
+Set KITCHEN_URL when the Flask app is not on 127.0.0.1:5000.
