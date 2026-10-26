@@ -115,7 +115,7 @@ def reviews():
 @api.route("/orders/<int:order_id>")
 def order_detail(order_id: int):
     """IDOR — no auth / ownership check. FLAG{RD_IDOR_ORDER}"""
-    data = dbmod.get_order_by_id(order_id)
+    data = dbmod.fetch_order(order_id)
     if not data:
         return jsonify({"error": "not found"}), 404
     return jsonify(data)
