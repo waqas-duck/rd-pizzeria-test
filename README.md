@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Exports service
 
 exports_service.py serves back-office CSV exports (run it with uvicorn on its own port).
+Exports are read from package/rubber_duck_pizzeria/data/exports/.
