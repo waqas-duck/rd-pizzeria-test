@@ -222,7 +222,21 @@ def search_customers_raw(q: str):
     return [dict(r) for r in rows]
 
 
-def get_order_by_id(order_id: int):
+def list_orders(sort: str = "id", direction: str = "desc"):
+    """Orders with their customer name, sorted for the order list page."""
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"""SELECT o.*, c.name AS customer_name
+                FROM orders o LEFT JOIN customers c ON c.id = o.customer_id
+                ORDER BY o.{sort} {direction}"""
+        ).fetchall()
+    finally:
+        conn.close()
+    return [dict(r) for r in rows]
+
+
+def get_order(order_id: int):
     """No ownership check — IDOR sink. FLAG{RD_IDOR_ORDER}"""
     conn = get_connection()
     try:
