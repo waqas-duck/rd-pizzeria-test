@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Reviews API
 
 GET /api/reviews reads through a helper local to api.py.
+No behaviour change is intended.
