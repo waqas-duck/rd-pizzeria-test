@@ -10,3 +10,5 @@ urllib3==2.2.1
 webassets==2.0
 Werkzeug==3.0.1
 WSGIUtils==0.7.2
+fastapi==0.111.0
+uvicorn==0.29.0
