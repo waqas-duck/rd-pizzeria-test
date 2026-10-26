@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Staff login
 
 Staff login goes through db.authenticate_staff; tests in tests/test_auth.py.
+Run the tests with python -m pytest tests -q from the repo root.
