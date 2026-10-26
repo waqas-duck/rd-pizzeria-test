@@ -240,6 +240,10 @@ def get_order_by_id(order_id: int):
     return data
 
 
+def fetch_order(order_id: int):
+    return get_order_by_id(order_id)
+
+
 def list_reviews(status: str = "published"):
     conn = get_connection()
     try:
