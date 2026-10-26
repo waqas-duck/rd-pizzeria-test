@@ -240,12 +240,12 @@ def get_order_by_id(order_id: int):
     return data
 
 
-def list_reviews(status: str = "published"):
+def list_reviews(status: str = "published", limit: int = 50):
     conn = get_connection()
     try:
         rows = conn.execute(
-            "SELECT * FROM reviews WHERE status = ? ORDER BY id DESC",
-            (status,),
+            "SELECT * FROM reviews WHERE status = ? ORDER BY id DESC LIMIT ?",
+            (status, int(limit)),
         ).fetchall()
     finally:
         conn.close()
