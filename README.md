@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Order detail
 
 GET /api/orders/<id> reads through db.fetch_order.
+No behaviour change is intended.
