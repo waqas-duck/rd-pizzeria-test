@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 The order list can be sorted with `?sort=<column>&dir=asc|desc`.
 Directions: asc or desc.
 The default sort is newest first.
+Unknown sort columns are rejected.
