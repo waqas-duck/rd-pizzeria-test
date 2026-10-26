@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Staff login
 
 Staff authentication lives in rubber_duck_pizzeria/auth.py.
+No behaviour change is intended.
