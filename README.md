@@ -5,3 +5,4 @@ Private test repo for the RubberDuck GitHub App (dev app only). Copied from the 
 ## Review helpers
 
 list_reviews is capped (50 by default) and covered by tests/test_db.py.
+Run the tests with python -m pytest tests -q from the repo root.
