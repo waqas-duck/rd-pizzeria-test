@@ -94,11 +94,23 @@ def search():
     return jsonify(payload)
 
 
+def _reviews_by_status(status: str = "published"):
+    conn = dbmod.get_connection()
+    try:
+        rows = conn.execute(
+            "SELECT * FROM reviews WHERE status = ? ORDER BY id DESC",
+            (status,),
+        ).fetchall()
+    finally:
+        conn.close()
+    return [dict(r) for r in rows]
+
+
 @api.route("/reviews", methods=["GET", "POST"])
 def reviews():
     if request.method == "GET":
         status = request.args.get("status", "published")
-        return jsonify({"reviews": dbmod.list_reviews(status)})
+        return jsonify({"reviews": _reviews_by_status(status)})
 
     data = request.get_json(silent=True) or request.form
     name = data.get("customer_name") or data.get("name") or "Guest"
