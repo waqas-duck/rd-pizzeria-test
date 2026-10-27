@@ -337,7 +337,7 @@ def get_discount_totals(order_ids: list[int]) -> dict:
     return result
 
 
-def verify_staff(username: str, password: str):
+def authenticate_staff(username: str, password: str):
     conn = get_connection()
     try:
         row = conn.execute(
