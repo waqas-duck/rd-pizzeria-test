@@ -16,6 +16,12 @@
     return html;
   }
 
+  function ratingLabel(rating) {
+    var value = Number(rating);
+    if (!value) return "Not rated";
+    return value.toFixed(1) + " " + starHtml(value);
+  }
+
   function avatarSrc(path) {
     if (!path) path = "table/Untitled-1.jpg";
     return "/static/rubber_duck_pizzeria/images/" + path.replace(/^\/+/, "");
@@ -57,11 +63,8 @@
       '<div class="row align-items-center gx-4">' +
       '<div class="text-xl-center start-bx col-xl-7 col-sm-9 col-lg-8 col-6">' +
       '<h2 class="text-black font-w600 me-xl-0 me-3">' +
-      rating +
+      ratingLabel(rating) +
       "</h2>" +
-      '<div class="star-review2 mb-2">' +
-      starHtml(rating) +
-      "</div></div>" +
       '<div class="col-xl-5 col-sm-3 col-lg-4 col-6 text-end">' +
       '<a href="javascript:void(0);" class="text-danger me-2 fs-14 font-w600">DELETE</a>' +
       '<a href="javascript:void(0);" class="text-success fs-14 font-w600">PUBLISH</a>' +
