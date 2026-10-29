@@ -8,7 +8,3 @@ def kitchen_target() -> int:
 
 def promo_enabled() -> bool:
     return bool(get_setting("promo_enabled", False))
-
-
-def timezone_label() -> str:
-    return str(config_values.get("timezone", "UTC"))
