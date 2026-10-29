@@ -1,0 +1,17 @@
+# Team rules RubberDuck checks on every pull request (`@rubberduck guard`).
+rules:
+  - id: no-dynamic-order-by
+    forbid: "ORDER BY .*\\{"
+    paths: ["*.py"]
+    message: Sort columns come from a fixed allow-list; never format them into SQL.
+    severity: high
+  - id: no-select-star
+    forbid: "SELECT [a-z_]*\\.?\\*"
+    paths: ["*.py"]
+    message: List the columns the page needs instead of SELECT *.
+    severity: warning
+  - id: validated-query-params
+    forbid: "request\\.args\\.get\\("
+    paths: ["*.py"]
+    message: Read query parameters through the validated helpers in forms.py.
+    severity: warning
