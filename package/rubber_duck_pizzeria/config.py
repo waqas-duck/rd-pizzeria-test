@@ -11,7 +11,9 @@ config_values = {
 }
 
 
-def get_setting(key: str, default=None):
+def get_setting(key: str, default=None, *, required: bool = False):
+    if required and key not in config_values:
+        raise KeyError(key)
     return config_values.get(key, default)
 
 
