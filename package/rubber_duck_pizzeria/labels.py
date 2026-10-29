@@ -1,4 +1,4 @@
-"""Display labels for the kitchen (moved out of services)."""
+"""Display labels for the kitchen."""
 from rubber_duck_pizzeria.config import config_values
 
 
