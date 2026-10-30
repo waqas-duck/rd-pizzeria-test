@@ -10,3 +10,4 @@ urllib3==2.2.1
 webassets==2.0
 Werkzeug==3.0.1
 WSGIUtils==0.7.2
+pytest==7.0.0
