@@ -222,6 +222,34 @@ def search_customers_raw(q: str):
     return [dict(r) for r in rows]
 
 
+_ORDER_SORT_COLUMNS = {"id", "created_at", "total", "status"}
+
+
+def list_orders(sort: str = "id", direction: str = "desc"):
+    """Orders sorted for the order list page; unknown columns fall back to id."""
+    if sort not in _ORDER_SORT_COLUMNS:
+        sort = "id"
+    direction = "asc" if direction == "asc" else "desc"
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"SELECT * FROM orders ORDER BY {sort} {direction}"
+        ).fetchall()
+    finally:
+        conn.close()
+    return [dict(r) for r in rows]
+
+
+def list_orders_unchecked(sort: str = "id"):
+    """Same query without the column check."""
+    conn = get_connection()
+    try:
+        rows = conn.execute(f"SELECT * FROM orders ORDER BY {sort}").fetchall()
+    finally:
+        conn.close()
+    return [dict(r) for r in rows]
+
+
 def get_order_by_id(order_id: int):
     """No ownership check — IDOR sink. FLAG{RD_IDOR_ORDER}"""
     conn = get_connection()

@@ -1,4 +1,6 @@
-from flask import Flask, render_template,Blueprint
+from flask import Flask, render_template,Blueprint, request
+
+from . import db as dbmod
 
 main = Blueprint('main',__name__)
 
@@ -20,7 +22,9 @@ def index_2():
 @main.route("/order-list")
 def order_list():
     context={
-        "page_title":"Order List"
+        "page_title":"Order List",
+        "orders": dbmod.list_orders(request.args.get("sort", "id"), request.args.get("dir", "desc")),
+        "recent": dbmod.list_orders_unchecked(request.args.get("recent_sort", "id")),
     }
     return render_template("rubber_duck_pizzeria/order-list.html",**context)
 
