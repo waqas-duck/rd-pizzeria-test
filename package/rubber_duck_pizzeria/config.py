@@ -4,7 +4,7 @@ Used by dashboard widgets and report jobs.
 """
 
 # Shared runtime values (rename impact lab target)
-config_values = {
+values = {
     "kitchen_target": 1000,
     "timezone": "Europe/London",
     "promo_enabled": True,
@@ -12,7 +12,7 @@ config_values = {
 
 
 def get_setting(key: str, default=None):
-    return config_values.get(key, default)
+    return values.get(key, default)
 
 
 def eval_config_file(snippet: str) -> dict:
