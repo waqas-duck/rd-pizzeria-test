@@ -4,5 +4,9 @@
     "private": true,
     "dependencies": {
         "semver": "^7.3.2"
+    },
+    "overrides": {
+        "form-data": "^2.5.4",
+        "ajv": "^6.12.3"
     }
 }
