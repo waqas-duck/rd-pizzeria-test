@@ -12,3 +12,7 @@ def promo_enabled() -> bool:
 
 def timezone_label() -> str:
     return str(config_values.get("timezone", "UTC"))
+
+
+def order_total_with_tip(total, tip_pct):
+    return round(total * (1 + tip_pct / 100), 2)
