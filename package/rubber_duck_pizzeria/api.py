@@ -152,7 +152,7 @@ def login():
             }
         )
 
-    user = dbmod.verify_staff(username, password)
+    user = dbmod.authenticate_staff(username, password)
     if not user:
         return jsonify({"ok": False, "error": "invalid credentials"}), 401
 
