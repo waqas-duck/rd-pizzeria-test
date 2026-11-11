@@ -12,6 +12,7 @@ from functools import wraps
 from flask import Blueprint, jsonify, request, session, make_response, render_template_string
 
 from . import db as dbmod
+from .auth import verify_staff
 
 api = Blueprint("kitchen_api", __name__, url_prefix="/api")
 
@@ -152,7 +153,7 @@ def login():
             }
         )
 
-    user = dbmod.verify_staff(username, password)
+    user = verify_staff(username, password)
     if not user:
         return jsonify({"ok": False, "error": "invalid credentials"}), 401
 
