@@ -9,6 +9,7 @@ import hashlib
 import os
 import sqlite3
 from pathlib import Path
+from .passwords import _md5
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 DB_PATH = DATA_DIR / "pizzeria.db"
@@ -19,11 +20,6 @@ def get_connection() -> sqlite3.Connection:
     conn = sqlite3.connect(str(DB_PATH))
     conn.row_factory = sqlite3.Row
     return conn
-
-
-def _md5(password: str) -> str:
-    # Intentional weak hash (FLAG path RD_WEAK_HASH)
-    return hashlib.md5(password.encode("utf-8")).hexdigest()
 
 
 def init_db(force: bool = False) -> None:
