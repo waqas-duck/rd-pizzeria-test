@@ -8,19 +8,11 @@ export class PaymentProcessor {
 
   constructor(private readonly on: boolean) {}
 
-  enabled(): boolean {
-    return this.on;
-  }
-
-  buildIdempotencyKey(event: PaymentEvent): string {
-    return `${this.prefix}:${event.id}`;
-  }
-
-  async handle(event: PaymentEvent): Promise<string> {
-    if (!this.enabled()) {
+  async process(event: PaymentEvent): Promise<string> {
+    if (!this.on) {
       return 'skipped';
     }
-    return this.buildIdempotencyKey(event);
+    return `${this.prefix}:${event.id}`;
   }
 
   refund(event: PaymentEvent): string {
