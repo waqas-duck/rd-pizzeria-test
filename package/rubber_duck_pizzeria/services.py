@@ -12,3 +12,7 @@ def promo_enabled() -> bool:
 
 def timezone_label() -> str:
     return str(config_values.get("timezone", "UTC"))
+
+
+def kitchen_target_label() -> str:
+    return f"target {kitchen_target()} orders"
