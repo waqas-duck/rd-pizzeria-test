@@ -33,3 +33,8 @@ def test_the_local_menu_answers():
 def test_the_total_expression_adds_up():
     expr = "2 + 3"
     assert eval(expr) == 5
+
+
+def test_the_total_expression_multiplies():
+    expr = "2 * 3"
+    assert eval(expr) == 6
