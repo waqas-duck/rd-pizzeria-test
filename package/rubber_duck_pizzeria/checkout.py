@@ -5,6 +5,8 @@ import requests
 from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 
+from .pricing import discounted_total
+
 db = SQLAlchemy()
 DISCOUNT_CODES = {"DUCK10": 10, "DUCK5": 5}
 
@@ -22,27 +24,13 @@ def order_status(paid: bool, items: int) -> str:
     return "paid" if paid else "pending"
 
 
-def apply_discount(total_cents: int, percent: int) -> int:
-    if total_cents <= 0:
-        return 0
-    if percent <= 0:
-        return total_cents
-    return total_cents - total_cents * percent // 100
-
-
-def price_per_item(total_cents: int, items: int) -> int:
-    if items <= 0:
-        return 0
-    return total_cents // items
-
-
 def checkout(order_id: int, card_token: str, code: str) -> Dict:
     order = db.session.get(Order, order_id)
     if order is None or order.status != "open":
         return {"ok": False, "error": "this order cannot be paid"}
     if not card_token:
         return {"ok": False, "error": "no card"}
-    amount = apply_discount(order.total_cents, DISCOUNT_CODES.get(code.strip().upper(), 0))
+    amount = discounted_total(order.total_cents, DISCOUNT_CODES.get(code.strip().upper(), 0))
     charge = requests.post(current_app.config["PAYMENT_URL"],
                            json={"card": card_token, "amount": amount}, timeout=10).json()
     order.payment_id = charge["id"]
