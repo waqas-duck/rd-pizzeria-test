@@ -12,3 +12,7 @@ def promo_enabled() -> bool:
 
 def timezone_label() -> str:
     return str(config_values.get("timezone", "UTC"))
+
+
+def delivery_minutes(distance_km: float) -> int:
+    return int(15 + distance_km * 4)
