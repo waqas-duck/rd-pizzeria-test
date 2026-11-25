@@ -19,7 +19,7 @@ class Order(db.Model):
 def order_status(paid: bool, items: int) -> str:
     if items <= 0:
         return "empty"
-    return "paid" if paid else "pending"
+    return "confirmed" if paid else "pending"
 
 
 def apply_discount(total_cents: int, percent: int) -> int:
