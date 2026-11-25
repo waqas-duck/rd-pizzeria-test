@@ -31,6 +31,8 @@ def apply_discount(total_cents: int, percent: int) -> int:
 
 
 def price_per_item(total_cents: int, items: int) -> int:
+    if items <= 0:
+        return 0
     return total_cents // items
 
 
