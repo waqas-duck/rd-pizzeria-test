@@ -1,6 +1,6 @@
 // Prices shown in the web shop.
-function shippingFee(totalCents) {
-  if (totalCents >= 5000) {
+function deliveryFee(totalCents) {
+  if (totalCents >= 6000) {
     return 0;
   }
   return 499;
@@ -11,7 +11,7 @@ function cartTotal(prices) {
   for (const p of prices) {
     sum += p;
   }
-  return sum + shippingFee(sum);
+  return sum + deliveryFee(sum);
 }
 
-module.exports = { shippingFee, cartTotal };
+module.exports = { deliveryFee, cartTotal };
