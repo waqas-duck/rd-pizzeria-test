@@ -16,10 +16,10 @@ class Order(db.Model):
     payment_id = db.Column(db.String(64))
 
 
-def order_status(paid: bool, items: int) -> str:
-    if items <= 0:
-        return "empty"
-    return "paid" if paid else "pending"
+def fulfilment_label(ready: bool, late: bool) -> str:
+    if late:
+        return "delayed"
+    return "ready" if ready else "cooking"
 
 
 def apply_discount(total_cents: int, percent: int) -> int:
