@@ -6,7 +6,7 @@ export function InteractionTracker() {
   useEffect(() => {
     const onClick = (e: MouseEvent) =>
       trackHeatmapClick(e.clientX, e.clientY, window.innerWidth, window.innerHeight);
-    document.addEventListener('click', onClick);
+    document.addEventListener('click', onClick, { passive: true });
     return () => document.removeEventListener('click', onClick);
   }, []);
   return null;
